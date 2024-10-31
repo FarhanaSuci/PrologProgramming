@@ -29,11 +29,13 @@ father(X,Y):-
 sister(X,Y):-
   parents(M,X),
   parents(M,Y),
-  female(X).
+  female(X),
+  X \=Y.
 brother(X,Y):-
   parents(M,X),
   parents(M,Y),
-  male(X).
+  male(X),
+  X \=Y.
 grandparents(X,Y):-
  parents(M,Y),
  parents(X,M).
@@ -47,9 +49,15 @@ grandmother(X,Y):-
   female(X).
 couples(X,Y):-
   parents(X,M),
-  parents(Y,M).
+  parents(Y,M),
+  X\=Y.
 cousine(X,Y):-
   grandparents(M,X),
-  grandparents(M,Y).
+  grandparents(M,Y),
+  X \=Y.
+siblings(X,Y):-
+    parents(Z,X),
+    parents(Z,Y),
+    X \= Y.
  
  
